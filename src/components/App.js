@@ -2,14 +2,11 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 
-const App = (props) => {
+const App = ({ store, dispatch }) => {
 	useEffect(() => {
-		let unmounted = false;
-		props.dispatch(handleInitialData());
+		dispatch(handleInitialData());
 
-		return () => {
-			unmounted = true;
-		};
+		return () => {};
 	}, []);
 
 	return <div>Starter Code</div>;
