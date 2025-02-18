@@ -16,12 +16,18 @@ const NewTweet = () => {
 	};
 
 	return (
-		<div className="new-tweet">
+		<div>
 			<h3 className="center">Compose new Tweet</h3>
-			<input className="textarea" onChange={handleChange}></input>
-			<button className="btn" onClick={handleSubmit}>
-				SUBMIT
-			</button>
+			<form className="new-tweet" onSubmit={handleSubmit}>
+				<textarea
+					className="textarea"
+					placeholder="What's happenin?"
+					value={text}
+					maxLength={280}
+					onChange={handleChange}
+				/>
+				<button className="btn">SUBMIT</button>
+			</form>
 		</div>
 	);
 };
