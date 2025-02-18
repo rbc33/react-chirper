@@ -14,7 +14,7 @@ const NewTweet = () => {
 		console.log("NewTweet: ", text);
 		setText("");
 	};
-
+	const tweetLeft = 280 - text.length;
 	return (
 		<div>
 			<h3 className="center">Compose new Tweet</h3>
@@ -26,7 +26,10 @@ const NewTweet = () => {
 					maxLength={280}
 					onChange={handleChange}
 				/>
-				<button className="btn">SUBMIT</button>
+				{tweetLeft <= 100 && <div className="tweet-lenght">{tweetLeft}</div>}
+				<button className="btn" type="submit" disabled={text === ""}>
+					SUBMIT
+				</button>
 			</form>
 		</div>
 	);
