@@ -40,7 +40,7 @@ export const handleToggleTweet = (info) => {
 
 export const handleAddTweet = (text, replyingTo) => {
 	return (dispatch, getState) => {
-		const { authUser } = getState;
+		const { authUser } = getState();
 		dispatch(showLoading());
 		return saveTweet({
 			text,
