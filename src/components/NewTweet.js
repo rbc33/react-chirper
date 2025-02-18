@@ -19,6 +19,7 @@ const NewTweet = () => {
 		<div>
 			<h3 className="center">Compose new Tweet</h3>
 			<form className="new-tweet" onSubmit={handleSubmit}>
+				{/* redirect to / onSubmit */}
 				<textarea
 					className="textarea"
 					placeholder="What's happenin?"
