@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
+import LoadingBar from "react-redux-loading-bar";
 
 const App = ({ dispatch, loading }) => {
 	useEffect(() => {
@@ -11,7 +12,12 @@ const App = ({ dispatch, loading }) => {
 		return () => {};
 	}, []);
 
-	return <div>{loading ? <h3>Loading...</h3> : <Dashboard />}</div>;
+	return (
+		<div>
+			<LoadingBar />
+			{loading === true ? null : <Dashboard />}
+		</div>
+	);
 };
 const mapStatetoProps = (authUser) => ({
 	loading: authUser === null,
