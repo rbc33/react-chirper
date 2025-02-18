@@ -1,4 +1,4 @@
-import { RECEIVE_TWEETS, TOGGLE_TWEET } from "../actions/tweet";
+import { RECEIVE_TWEETS, TOGGLE_TWEET } from "../actions/tweets";
 
 export default function tweets(state = {}, action) {
 	switch (action.type) {

@@ -1,5 +1,5 @@
 import { getInitialData } from "../utils/api";
-import { receiveTweets } from "./tweet";
+import { receiveTweets } from "./tweets";
 import { receiveUsers } from "./users";
 import { setAthedUser } from "./authUser";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
