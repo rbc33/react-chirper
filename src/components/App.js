@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { handleInitialData } from "../actions/shared";
 import Dashboard from "./Dashboard";
 import LoadingBar from "react-redux-loading-bar";
+import NewTweet from "./NewTweet";
 
 const App = ({ dispatch, loading }) => {
 	useEffect(() => {
@@ -15,7 +16,7 @@ const App = ({ dispatch, loading }) => {
 	return (
 		<div>
 			<LoadingBar />
-			{loading === true ? null : <Dashboard />}
+			{loading === true ? null : <NewTweet />}
 		</div>
 	);
 };
