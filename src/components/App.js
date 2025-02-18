@@ -5,6 +5,8 @@ import Dashboard from "./Dashboard";
 import LoadingBar from "react-redux-loading-bar";
 import NewTweet from "./NewTweet";
 import TweetPage from "./TweetPage";
+import Nav from "./Nav";
+import { Routes, Route } from "react-router-dom";
 
 const App = ({ dispatch, loading }) => {
 	useEffect(() => {
@@ -15,18 +17,19 @@ const App = ({ dispatch, loading }) => {
 	}, []);
 
 	return (
-		<div>
+		<>
 			<LoadingBar />
-			{loading === true ? null : (
-				<TweetPage
-					match={{
-						params: {
-							id: "2mb6re13q842wu8n106bhk",
-						},
-					}}
-				/>
-			)}
-		</div>
+			<div className="container">
+				<Nav />
+				{loading ? null : (
+					<Routes>
+						<Route path="/" element={<Dashboard />} />
+						<Route path="/tweet/:id" element={<TweetPage />} />
+						<Route path="/new" element={<NewTweet />} />
+					</Routes>
+				)}
+			</div>
+		</>
 	);
 };
 const mapStatetoProps = (authUser) => ({
