@@ -21,7 +21,7 @@ const TweetPage = (props) => {
 		</div>
 	);
 };
-const mapStateToProps = ({ authUser, tweets, users }, props) => {
+const mapStateToProps = ({ authedUser, tweets, users }, props) => {
 	const { id } = props.match.params;
 	return {
 		id,

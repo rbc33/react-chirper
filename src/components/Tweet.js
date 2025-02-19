@@ -7,8 +7,9 @@ import {
 import { connect } from "react-redux";
 import { formatDate, formatTweet } from "../utils/helpers";
 import { handleToggleTweet } from "../actions/tweets";
+import { Link } from "react-router-dom";
 
-const Tweet = ({ authUser, tweet, dispatch }) => {
+const Tweet = ({ authUser: authedUser, tweet, dispatch }) => {
 	const toParent = (e, id) => {
 		e.preventDefault();
 		// Todo: Redirect to parent Tweet
@@ -19,17 +20,26 @@ const Tweet = ({ authUser, tweet, dispatch }) => {
 			handleToggleTweet({
 				id: tweet.id,
 				hasLiked: tweet.hasLiked,
-				authUser,
+				authedUser,
 			})
 		);
 	};
 	if (tweet === null) return <p>This Tweet don't exist</p>;
 
-	const { name, avatar, timestamp, text, likes, hasLiked, replies, parent } =
-		tweet;
+	const {
+		name,
+		avatar,
+		timestamp,
+		text,
+		likes,
+		hasLiked,
+		replies,
+		parent,
+		id,
+	} = tweet;
 
 	return (
-		<div className="tweet">
+		<Link to={`/tweet/${id}`} className="tweet">
 			<img src={avatar} alt={`avatar of ${name}`} className="avatar" />
 			<div className="tweet-info">
 				<div>
@@ -60,17 +70,17 @@ const Tweet = ({ authUser, tweet, dispatch }) => {
 					<span>{likes !== 0 && likes}</span>
 				</div>
 			</div>
-		</div>
+		</Link>
 	);
 };
-const mapStateToProps = ({ authUser, users, tweets }, { id }) => {
+const mapStateToProps = ({ authedUser, users, tweets }, { id }) => {
 	const tweet = tweets[id];
 	const parentTweet = tweet ? tweets[tweet.replyingTo] : null;
 	return {
-		authUser,
+		authedUser,
 		tweet:
 			tweet && users[tweet.author]
-				? formatTweet(tweet, users[tweet.author], authUser, parentTweet)
+				? formatTweet(tweet, users[tweet.author], authedUser, parentTweet)
 				: null,
 	};
 };

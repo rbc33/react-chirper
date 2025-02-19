@@ -18,11 +18,11 @@ export const addTweet = (tweet) => {
 	};
 };
 
-const toggleTweet = ({ id, authUser, hasLiked }) => {
+const toggleTweet = ({ id, authedUser, hasLiked }) => {
 	return {
 		type: TOGGLE_TWEET,
 		id,
-		authUser,
+		authedUser,
 		hasLiked,
 	};
 };
@@ -40,11 +40,11 @@ export const handleToggleTweet = (info) => {
 
 export const handleAddTweet = (text, replyingTo) => {
 	return (dispatch, getState) => {
-		const { authUser } = getState();
+		const { authedUser } = getState();
 		dispatch(showLoading());
 		return saveTweet({
 			text,
-			author: authUser,
+			author: authedUser,
 			replyingTo,
 		})
 			.then((tweet) => dispatch(addTweet(tweet)))

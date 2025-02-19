@@ -13,8 +13,8 @@ export default function tweets(state = {}, action) {
 				[action.id]: {
 					...state[action.id],
 					likes: action.hasLiked
-						? state[action.id].likes.filter((uid) => uid !== action.authUser)
-						: state[action.id].likes.concat([action.authUser]),
+						? state[action.id].likes.filter((uid) => uid !== action.authedUser)
+						: state[action.id].likes.concat([action.authedUser]),
 				},
 			};
 		case ADD_TWEET:

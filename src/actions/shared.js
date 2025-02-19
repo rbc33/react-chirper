@@ -1,7 +1,7 @@
 import { getInitialData } from "../utils/api";
 import { receiveTweets } from "./tweets";
 import { receiveUsers } from "./users";
-import { setAthedUser } from "./authUser";
+import { setAthedUser } from "./authedUser";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 const AUTHED_ID = "tylermcginnis";

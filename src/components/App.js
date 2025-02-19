@@ -9,27 +9,27 @@ import Nav from "./Nav";
 import { Routes, Route } from "react-router-dom";
 
 const App = ({ dispatch, loading }) => {
-    useEffect(() => {
-        dispatch(handleInitialData());
-    }, [dispatch]);
+	useEffect(() => {
+		dispatch(handleInitialData());
+	}, [dispatch]);
 
-    return (
-        <>
-            <LoadingBar />
-            <div className="container">
-                <Nav />
-                {loading ? null : (
-                    <Routes>
-                        <Route path="/" element={<Dashboard />} />
-                        <Route path="/tweet/:id" element={<TweetPage />} />
-                        <Route path="/new" element={<NewTweet />} />
-                    </Routes>
-                )}
-            </div>
-        </>
-    );
+	return (
+		<>
+			<LoadingBar />
+			<div className="container">
+				<Nav />
+				{loading ? null : (
+					<Routes>
+						<Route path="/" element={<Dashboard />} />
+						<Route path="/tweet/:id" element={<TweetPage />} />
+						<Route path="/new" element={<NewTweet />} />
+					</Routes>
+				)}
+			</div>
+		</>
+	);
 };
-const mapStatetoProps = (authUser) => ({
-	loading: authUser === null,
+const mapStatetoProps = (authedUser) => ({
+	loading: authedUser === null,
 });
 export default connect(mapStatetoProps)(App);
