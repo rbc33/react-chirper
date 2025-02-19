@@ -5,14 +5,15 @@ import {
 	TiHeartOutline,
 } from "react-icons/ti";
 import { connect } from "react-redux";
-import { formatDate, formatTweet } from "../utils/helpers";
+import { Link, useNavigate } from "react-router-dom";
 import { handleToggleTweet } from "../actions/tweets";
-import { Link } from "react-router-dom";
+import { formatDate, formatTweet } from "../utils/helpers";
 
 const Tweet = ({ authUser: authedUser, tweet, dispatch }) => {
+	const navigate = useNavigate();
 	const toParent = (e, id) => {
 		e.preventDefault();
-		// Todo: Redirect to parent Tweet
+		navigate(`/tweet/${id}`);
 	};
 	const handleLike = (e) => {
 		e.preventDefault();

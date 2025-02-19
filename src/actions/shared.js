@@ -1,7 +1,7 @@
 import { getInitialData } from "../utils/api";
 import { receiveTweets } from "./tweets";
 import { receiveUsers } from "./users";
-import { setAthedUser } from "./authedUser";
+import { setAuthedUser } from "./authedUser";
 import { showLoading, hideLoading } from "react-redux-loading-bar";
 
 const AUTHED_ID = "tylermcginnis";
@@ -12,7 +12,7 @@ export const handleInitialData = () => {
 		return getInitialData().then(({ users, tweets }) => {
 			dispatch(receiveTweets(tweets));
 			dispatch(receiveUsers(users));
-			dispatch(setAthedUser(AUTHED_ID));
+			dispatch(setAuthedUser(AUTHED_ID));
 			dispatch(hideLoading());
 		});
 	};
